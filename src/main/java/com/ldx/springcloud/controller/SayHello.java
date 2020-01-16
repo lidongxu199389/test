@@ -1,5 +1,6 @@
 package com.ldx.springcloud.controller;
 
+import com.ldx.springcloud.base.config.vo.ResultModel;
 import com.ldx.springcloud.entity.User;
 import com.ldx.springcloud.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,9 +15,11 @@ public class SayHello {
     UserService userService;
 
     @RequestMapping("/sayHello")
-    public String hello(){
+    public ResultModel hello(){
         User user =userService.getUser();
-        System.out.println(user.getName());
-        return user.getName();
+        System.out.println("resultCode");
+        ResultModel resultModel =  new ResultModel();
+        resultModel.setResult(user);
+        return resultModel;
     }
 }
